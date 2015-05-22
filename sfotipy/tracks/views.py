@@ -18,7 +18,7 @@ def track_view(request, title):
 		}
 	}
 
-	json_data = json.dumps(data)
+	json_data = json.dumps(data) #Convierte el diccionario a json
 
 	return HttpResponse(json_data, content_type='application/json')
 
