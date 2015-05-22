@@ -10,7 +10,16 @@ class UserCreationEmailForm(UserCreationForm):
 	class Meta:
 		model = User
 		fields = ('username', 'email')
-		
+
+	def clean_email(self):
+		email = self.cleaned_data['email']
+		try:
+			User.objects.get(email=email)
+		except User.DoesNotExist:
+			return email	
+		raise forms.ValidationError('Email ya esta registrado.')
+	
+
 class EmailAuthenticationForm(forms.Form):
 	email = forms.EmailField()
 	password = forms.CharField(label='Password', widget=forms.PasswordInput)
