@@ -16,6 +16,8 @@ class AlbumInline(admin.StackedInline):
 
 class ArtistAdmin(admin.ModelAdmin):
 	search_fields = ('first_name', 'last_name')
+	#filter_horizontal = ('favorite_songs', )
+	filter_vertical = ('favorite_songs', )
 	inlines = [AlbumInline, TrackInline]
 
 admin.site.register(Artist, ArtistAdmin)
