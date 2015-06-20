@@ -7,7 +7,7 @@ from .models import Track
 def track_view(request, title):
 
 	track = get_object_or_404(Track, title=title)
-
+	
 	data = {
 		'title': track.title,
 		'order': track.order,
@@ -18,9 +18,9 @@ def track_view(request, title):
 		}
 	}
 
-	json_data = json.dumps(data) #Convierte el diccionario a json
+	#json_data = json.dumps(data) #Convierte el diccionario a json
 
-	return HttpResponse(json_data, content_type='application/json')
+	#return HttpResponse(json_data, content_type='application/json')
 
-	#return render(request, 'track.html', {'track': track})
+	return render(request, 'track.html', {'track': track})
 

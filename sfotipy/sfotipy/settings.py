@@ -28,6 +28,10 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'sfotipy.context_processors.basico',
+)
 
 INSTALLED_APPS = (
     'django.contrib.admin',
