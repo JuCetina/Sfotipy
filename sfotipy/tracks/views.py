@@ -24,3 +24,7 @@ def track_view(request, title):
 
 	return render(request, 'track.html', {'track': track})
 
+from rest_framework import viewsets
+
+class TrackViewSet(viewsets.ModelViewSet):
+	model = Track

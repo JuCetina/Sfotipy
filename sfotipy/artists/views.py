@@ -9,3 +9,11 @@ class ArtistDetailView(DetailView):
 
 	def get_template_names(self):
 		return 'artist.html'
+
+from rest_framework import viewsets
+
+from .serializers import ArtistSerializer
+
+class ArtistViewSet(viewsets.ModelViewSet):
+	model = Artist
+	serializer_class = ArtistSerializer
