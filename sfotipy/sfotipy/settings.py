@@ -20,12 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '08iuv&&t4xov!^*08+xmf^6(3&p&sk3euc#*2kbj0+_o3!02jj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = []
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS' : ('rest_framework.filters.DjangoFilterBackend',)
+}
 
 # Application definition
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
