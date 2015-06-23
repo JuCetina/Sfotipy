@@ -1,3 +1,4 @@
+{% load cache %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +15,11 @@
 			</li>
 			{% endfor %}
 		</ul>
+		{% cache 60 track.title %}
 		<p>
 			Title: {{track.title}}
 		</p>
+		{% endcache %}
 		<p>
 			Order:	{{track.order}}
 		</p>

@@ -9,7 +9,7 @@ from django.views.decorators.cache import cache_page
 
 from .models import Track
 
-@cache_page(60)
+#@cache_page(60)
 
 def track_view(request, title):
 
