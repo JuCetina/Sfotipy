@@ -12,3 +12,12 @@ class Artist(models.Model):
 
 	def __unicode__(self):
 		return self.first_name
+
+from django.core.cache import cache
+from django.db.models.signals import post_save
+from django.contrib.sessions.models import Session
+
+@receiver(post_save)
+def clear_cache(sender, **kwargs):
+	if sender != Session:
+		cache._cache.flush_all()
