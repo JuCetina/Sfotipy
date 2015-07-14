@@ -14,6 +14,8 @@ from userprofiles.views import LoginView
 #from django.views.generic import RedirectView
 from userprofiles.views import PerfilRedirectView
 
+from artists.views import AlbumListView
+
 router = routers.DefaultRouter()
 router.register(r'artists', ArtistViewSet)
 router.register(r'albums', AlbumViewSet)
@@ -33,6 +35,8 @@ urlpatterns = patterns('',
     #url(r'^profile/$', ProfileView.as_view(), name='profile'),
     #url(r'^perfil/$', RedirectView.as_view(url='/login/'), name='perfil'),
     url(r'^perfil/$', PerfilRedirectView.as_view(), name='perfil'),
+    url(r'^albums/$', AlbumListView.as_view(), name='album_list'),
+    url(r'^albums/(?P<artist>[\w\-]+)/$', AlbumListView.as_view(), name='album_list'),
 )
 
 
