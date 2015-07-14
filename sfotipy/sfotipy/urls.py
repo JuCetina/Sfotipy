@@ -9,6 +9,8 @@ from artists.views import ArtistViewSet
 from albums.views import AlbumViewSet
 from tracks.views import TrackViewSet
 
+from userprofiles.views import LoginView
+
 router = routers.DefaultRouter()
 router.register(r'artists', ArtistViewSet)
 router.register(r'albums', AlbumViewSet)
@@ -24,6 +26,7 @@ urlpatterns = patterns('',
     url(r'^signin/', 'userprofiles.views.signin', name='signin'),
     url(r'^artists/(?P<pk>[\d]+)', ArtistDetailView.as_view()),
     url(r'^api/', include(router.urls)),
+    url(r'^login/$', LoginView.as_view(), name='login'),
 )
 
 

@@ -19,3 +19,10 @@ def signin(request):
 		return render(request, 'home.html', {'form': form.get_user()})
 
 	return render(request, 'signin.html', {'form': form})
+
+from django.views.generic import View
+from django.http import HttpResponse
+
+class LoginView(View):
+	def get(self, request,*args, **kwargs):
+		return HttpResponse('Esta es una LoginView!!!')
