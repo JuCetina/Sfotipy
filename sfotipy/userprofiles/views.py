@@ -61,6 +61,5 @@ class ProfileView(TemplateView):
 
 		return context
 
-		def get_userprofile(self):
-			return self.request.user.userprofile		
-
+	def get_userprofile(self):
+		return self.request.user.userprofile		
