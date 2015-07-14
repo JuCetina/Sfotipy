@@ -15,6 +15,7 @@ from userprofiles.views import LoginView
 from userprofiles.views import PerfilRedirectView
 
 from artists.views import AlbumListView
+from artists.views import AlbumDetailView
 
 router = routers.DefaultRouter()
 router.register(r'artists', ArtistViewSet)
@@ -37,6 +38,7 @@ urlpatterns = patterns('',
     url(r'^perfil/$', PerfilRedirectView.as_view(), name='perfil'),
     url(r'^albums/$', AlbumListView.as_view(), name='album_list'),
     url(r'^albums/(?P<artist>[\w\-]+)/$', AlbumListView.as_view(), name='album_list'),
+    url(r'^albums/detail/(?P<title>[\w\-]+)/$', AlbumDetailView.as_view(), name='album_detail'),
 )
 
 

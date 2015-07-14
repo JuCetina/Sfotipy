@@ -38,3 +38,10 @@ class AlbumListView(ListView):
 
 		return queryset
 
+from django.views.generic import DetailView
+
+class AlbumDetailView(DetailView):
+	model = Album
+	template_name = 'album_detail.html'
+	slug_field = 'title' #Campo por el que busa en la BD
+	slug_url_kwarg = 'title' #Variable que recibe de urls.py
