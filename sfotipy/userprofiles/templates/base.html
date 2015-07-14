@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head lang="es">
+		<meta charset="UTF-8">
+		<title>SFOTIPY</title>
+	</head>
+	<body>
+		<section>
+			<div>
+				<div>
+					Sfoti.py	
+				</div>
+				<div>
+					{% if is_auth %}
+						{{ name }} <a href="">Logout</a>
+					{% else %}
+						<a href="">Login</a>
+					{% endif %}
+				</div>
+			</div>
+			{% block content %}
+			{% endblock content %}
+		</section>
+	</body>
+</html>
