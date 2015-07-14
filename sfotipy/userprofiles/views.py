@@ -22,12 +22,14 @@ def signin(request):
 
 #from django.views.generic import View
 #from django.http import HttpResponse
-from django.views.generic import TemplateView
+
 
 #class LoginView(View):
 
 	#def get(self, request,*args, **kwargs):
 	#	return HttpResponse('Esta es una LoginView!!!')
+
+from django.views.generic import TemplateView
 
 class LoginView(TemplateView):
 	template_name = 'login.html'
@@ -50,16 +52,21 @@ class LoginView(TemplateView):
 
 		return context
 
-class ProfileView(TemplateView):
-	template_name = 'profile.html'
+#class ProfileView(TemplateView):
+#	template_name = 'profile.html'
+#
+#	def get_context_data(self, **kwargs):
+#		context = super(ProfileView, self).get_context_data(**kwargs)
+#
+#		if self.request.user.is_authenticated():
+#			context.update({'userprofile': self.get_userprofile()})
+#
+#		return context
+#
+#	def get_userprofile(self):
+#		return self.request.user.userprofile		
 
-	def get_context_data(self, **kwargs):
-		context = super(ProfileView, self).get_context_data(**kwargs)
+from django.views.generic import RedirectView
 
-		if self.request.user.is_authenticated():
-			context.update({'userprofile': self.get_userprofile()})
-
-		return context
-
-	def get_userprofile(self):
-		return self.request.user.userprofile		
+class PerfilRedirectView(RedirectView):
+	pattern_name = 'login'

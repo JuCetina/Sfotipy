@@ -9,8 +9,10 @@ from artists.views import ArtistViewSet
 from albums.views import AlbumViewSet
 from tracks.views import TrackViewSet
 
-from userprofiles.views import LoginView, ProfileView
-
+from userprofiles.views import LoginView
+#from userprofiles.views import ProfileView
+#from django.views.generic import RedirectView
+from userprofiles.views import PerfilRedirectView
 
 router = routers.DefaultRouter()
 router.register(r'artists', ArtistViewSet)
@@ -28,7 +30,9 @@ urlpatterns = patterns('',
     url(r'^artists/(?P<pk>[\d]+)', ArtistDetailView.as_view()),
     url(r'^api/', include(router.urls)),
     url(r'^login/$', LoginView.as_view(), name='login'),
-    url(r'^profile/$', ProfileView.as_view(), name='profile'),
+    #url(r'^profile/$', ProfileView.as_view(), name='profile'),
+    #url(r'^perfil/$', RedirectView.as_view(url='/login/'), name='perfil'),
+    url(r'^perfil/$', PerfilRedirectView.as_view(), name='perfil'),
 )
 
 
