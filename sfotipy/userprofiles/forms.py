@@ -43,3 +43,10 @@ class EmailAuthenticationForm(forms.Form):
 
 	def get_user(self):
 		return self.user_cache
+
+
+from django import forms
+
+class LoginForm(forms.Form):
+	username = forms.CharField()
+	password = forms.CharField(widget=forms.PasswordInput)

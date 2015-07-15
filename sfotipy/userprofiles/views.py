@@ -29,10 +29,29 @@ def signin(request):
 	#def get(self, request,*args, **kwargs):
 	#	return HttpResponse('Esta es una LoginView!!!')
 
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
+from userprofiles.forms import LoginForm
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
 
-class LoginView(TemplateView):
+#class LoginView(TemplateView):
+class LoginView(FormView):
 	template_name = 'login.html'
+	#form_class = LoginForm
+	success_url = '/albums'
+	form_class = AuthenticationForm
+
+	def form_valid(self, form):
+		#username = form.cleaned_data['username']
+		#password = form.cleaned_data['password']
+
+		#user = authenticate(username=username, password=password)
+
+		#login(self.request, user)
+
+		login(self.request, form.user_cache)
+
+		return super(LoginView, self).form_valid(form)
 
 	def get_context_data(self, **kwargs):
 		context = super(LoginView, self).get_context_data(**kwargs)
@@ -45,12 +64,14 @@ class LoginView(TemplateView):
 
 		data = {
 			'is_auth': is_auth,
-			'name': name
+			'name': name,
 		}
 
 		context.update(data)
 
 		return context
+
+	
 
 #class ProfileView(TemplateView):
 #	template_name = 'profile.html'
