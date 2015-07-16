@@ -23,7 +23,9 @@ class ArtistViewSet(viewsets.ModelViewSet):
 from django.views.generic import ListView
 from albums.models import Album
 
-class AlbumListView(ListView):
+from userprofiles.mixins import LoginRequireMixin
+
+class AlbumListView(LoginRequireMixin, ListView):
 	model = Album
 	template_name = 'album_list.html'
 	paginate_by = 2
@@ -40,7 +42,7 @@ class AlbumListView(ListView):
 
 from django.views.generic import DetailView
 
-class AlbumDetailView(DetailView):
+class AlbumDetailView(LoginRequireMixin, DetailView):
 	model = Album
 	template_name = 'album_detail.html'
 	slug_field = 'title' #Campo por el que busa en la BD
